@@ -6,7 +6,7 @@
   "proxy": "http://localhost:8080/",
   "scripts": {
     "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
-    "install-server": "cd backend && npm install",
+    "install-server": "cd server && npm install",
     "start-server": "cd server && npm start",
     "build-client": "cd client && npm run build",
     "start-client": "cd client && npm run start"
