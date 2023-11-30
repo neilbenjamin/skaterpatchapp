@@ -1,0 +1,7 @@
+Primarily the main fetch components, designed from the logic after testing the endpoints in Thunderclient.
+I tried my best to seperate the CRUD functionality as best adn succintly as possible but also to reuse components wherever possible. This proved to be quite challenging with
+components props. 
+I also seperated the admin and skater pages as best I could. 
+
+Operationally, once the admin login is approved by the superuser (you can use this pre-approved login to gain access for admin login, email: admin@skate.com and password: 123).
+THey can then select and view a profile on the User Pro
