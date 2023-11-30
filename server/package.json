@@ -4,7 +4,7 @@
   "description": "backend-server",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "node server.js",
     "test": "mocha test/server.functionality.test.js"
   },
   "author": "neilbenjamin",
