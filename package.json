@@ -10,7 +10,8 @@
     "start-server": "cd server && npm start",
     "install-client": "cd client && npm install",
     "build-client": "cd client && npm run build",
-    "start-client": "cd client && npm run start"
+    "start-client": "cd client && npm run start",
+    "start-dev": "cd server && nodemon server.js"
   },
   
   "author": "neil_benjamin",
