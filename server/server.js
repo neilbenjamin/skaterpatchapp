@@ -46,6 +46,7 @@ app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
 
-
+//Add proxy if need to be for local dev deployment
+// "proxy": "http://localhost:8080/",
 // Export the server for testing
 module.exports = app;
