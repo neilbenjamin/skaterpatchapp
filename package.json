@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "root-directory package",
   "main": "index.js",
-  "proxy": "http://localhost:8080/",
   "scripts": {
     "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
     "install-server": "cd server && npm install",
