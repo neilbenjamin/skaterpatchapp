@@ -129,3 +129,6 @@ original root working deployment scrits :
     "concurrently": "^8.2.2"
   }
 }
+
+concurrently start script:
+"start": "concurrently \"npm run start-server\" \"npm run start-client\"",
