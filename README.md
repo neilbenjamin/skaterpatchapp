@@ -101,3 +101,31 @@ Performance: The app will primarily fetch JSON objects, minimizing the use of me
 Security: Valuable passwords and authentication keys will be stored in a separate .ENV file. Hosting on HTTPS with SSL certificates will enhance security.
 
 This README provides an overview of the Skater Patch App, its functionality, and technical details for installation and deployment. For further details and development updates, refer to the app's documentation.
+
+Workign run build command on render: npm run install-server && npm run install-client && npm run build-client
+
+original root working deployment scrits :
+    {
+  "name": "carinventory",
+  "version": "1.0.0",
+  "description": "root-directory package",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "install-server": "cd server && npm install",
+    "start-server": "cd server && npm start",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start",
+    "start-dev": "cd server && nodemon server.js"
+  },
+  "author": "neil_benjamin",
+  "license": "ISC",
+  "dependencies": {
+    "install": "^0.13.0",
+    "npm": "^10.2.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
