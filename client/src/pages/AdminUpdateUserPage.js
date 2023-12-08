@@ -31,7 +31,6 @@ function AdminUpdateUserPage() {
   const [adminRole, setAdminRole] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-
   //Uses selected userId as para, to endpoint to get the correct user.
   const handleUserSelect = async (selectedUserId) => {
     setUserId(selectedUserId);
@@ -90,8 +89,19 @@ function AdminUpdateUserPage() {
     }
   };
 
+  //Format dates:
+  const formatDateForDB = (dateString) => {
+    if (!dateString) return '';
+    return new Date(dateString).toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
+  };
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+  const formattedDatePurchased = formatDateForDB(datePurchased);
+  const formattedDateUsed = formatDateForDB(dateUsed);
+  const formattedExpiryDate = formatDateForDB(expiryDate);
 
     const bodyContent = JSON.stringify({
       name,
@@ -99,9 +109,9 @@ function AdminUpdateUserPage() {
       coachName,
       wpnumber,
       patchesRemaining,
-      datePurchased,
-      dateUsed,
-      expiryDate,
+      datePurchased: formattedDatePurchased,
+      dateUsed: formattedDateUsed,
+      expiryDate: formattedExpiryDate,
       patchCardNumber,
       purchaseInvoiceNumber,
       contactNumberSkater,
@@ -138,6 +148,7 @@ function AdminUpdateUserPage() {
     }
   };
 
+// JSX
   return (
     <div className="container my-4">
       <div className="row">
