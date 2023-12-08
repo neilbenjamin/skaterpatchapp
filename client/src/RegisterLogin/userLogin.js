@@ -26,7 +26,7 @@ function UserLogin({ onLoginSuccess }) {
 
     try {
       //Server endpoint.
-      let response = await fetch("http://localhost:8080/api/users/login", {
+      let response = await fetch("/api/users/login", {
         method: "POST",
         body: bodyContent,
         headers: headersList,
