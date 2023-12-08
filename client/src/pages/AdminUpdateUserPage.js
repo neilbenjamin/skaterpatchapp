@@ -37,7 +37,7 @@ function AdminUpdateUserPage() {
     if (selectedUserId) {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/users/get-user-profile/${selectedUserId}`
+          `/api/users/get-user-profile/${selectedUserId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch user details");

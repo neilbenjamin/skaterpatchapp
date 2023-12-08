@@ -15,7 +15,7 @@ function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
       try {
         const response = await fetch(
           //Users the same endpoint to GET the necessary data.
-          "http://localhost:8080/api/users/all-users"
+          "/api/users/all-users"
         );
         if (!response.ok) {
           throw new Error("Something went wrong!");

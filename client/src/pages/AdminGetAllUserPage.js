@@ -14,7 +14,7 @@ function AdminGetAllUsersPage({ onUserSelect, updateTrigger }) {
       setIsLoading(true);
       try {
         // Send a request to the API endpoint for fetching all users
-        const response = await fetch('http://localhost:8080/api/users/all-users');
+        const response = await fetch('/api/users/all-users');
         
         // Check if the response is successful; otherwise, throw an error
         if (!response.ok) {

@@ -24,7 +24,7 @@ function UserRegistration() {
     let bodyContent = JSON.stringify({ email, password, name, surname });
 
     try {
-      let response = await fetch("http://localhost:8080/api/users/register", {
+      let response = await fetch("/api/users/register", {
         method: "POST",
         body: bodyContent,
         headers: headersList
