@@ -54,6 +54,7 @@ function UserLogin({ onLoginSuccess }) {
       setError("Failed to connect to the server.");
     }
   };
+  console.log(localStorage)
 
   //User input fields
   return (

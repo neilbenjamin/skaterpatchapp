@@ -32,7 +32,7 @@ function AdminUserProfileDisplayPage({ userId }) {
   }, [userId]);
 
   if (!userId) {
-    return <div className="container"><p>Please select a user to view their profile.</p></div>;
+    return <div className="container mt-4 text-center"><p>Please select a user to view their profile.</p></div>;
   }
 
   if (isLoading) {
@@ -56,7 +56,7 @@ function AdminUserProfileDisplayPage({ userId }) {
   ];
 
   return (
-    <div className="container">
+    <div className="container mt-4 text-center">
       <h3>{userProfile.name + ' ' + userProfile.surname}</h3>
       <div className="row">
         {profileFields.map((field, index) => (

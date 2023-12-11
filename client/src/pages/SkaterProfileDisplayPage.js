@@ -56,7 +56,8 @@ function SkaterProfileDisplayPage() {
   ];
 
   return (
-    <div className="container">
+    <div className="container mt-4 text-center">
+       <img src="/western-province-figure-skating.png" alt="WP_Logo" />
       <h3>{userProfile.name + ' ' + userProfile.surname}</h3>
       <div className="row">
         {profileFields.map((field, index) => (

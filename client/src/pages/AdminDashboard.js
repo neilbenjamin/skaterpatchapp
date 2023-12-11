@@ -27,6 +27,7 @@ function AdminDashboard({ onLogout }) {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    
   );
 }
 

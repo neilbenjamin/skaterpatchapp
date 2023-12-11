@@ -4,7 +4,8 @@
 import React from 'react';
 const AdminContactPage = () => {
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 text-center">
+    <img src="/western-province-figure-skating.png" alt="WP_Logo" />
         <h1 className="text-center mb-3">Contact Us</h1>
         <div className="card">
           <div className="card-body">

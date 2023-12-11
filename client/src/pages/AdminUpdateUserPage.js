@@ -150,7 +150,8 @@ function AdminUpdateUserPage() {
 
 // JSX
   return (
-    <div className="container my-4">
+    <div className="container mt-4 text-center">
+     <img src="/western-province-figure-skating.png" alt="WP_Logo" />
       <div className="row">
         <div className="col-12">
           <h2 className="text-center mb-4 font-weight-bold">UPDATE USER PROFILE</h2>

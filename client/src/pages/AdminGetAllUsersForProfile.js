@@ -37,11 +37,12 @@ function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
   };
 
   return (
-    <div className="container my-4">
+    <div className="container mt-4 text-center">
+    <img src="/western-province-figure-skating.png" alt="WP_Logo" />
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h2 className="text-center mb-4 border-bottom pb-2">
-            Select User for Profile
+            Select User Profile
           </h2>
           {isLoading ? (
             <p>Loading...</p>

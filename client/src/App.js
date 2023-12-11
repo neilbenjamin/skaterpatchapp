@@ -1,76 +1,74 @@
-
-//Main app output
-//Bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
-//Imprts and components
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import UserRegistration from "./RegisterLogin/userRegistration";
 import UserLogin from "./RegisterLogin/userLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import SkaterDashboard from "./pages/SkaterDashboard";
-// Admin Page Routes
-import AdminContactPage from "./pages/AdminContactPage";
+import AdminHomePage from "./pages/AdminHomePage";
 import AdminUpdateUserPage from "./pages/AdminUpdateUserPage";
 import AdminProfilePage from "./pages/AdminProfilePage";
-import AdminHomePage from "./pages/AdminHomePage";
-//Skater Pages
-import SkaterContactPage from "./pages/SkaterContactPage";
-import SkaterProfileDisplayPage from "./pages/SkaterProfileDisplayPage";
+import AdminContactPage from "./pages/AdminContactPage";
 import SkaterHomePage from "./pages/SkaterHomePage";
+import SkaterProfileDisplayPage from "./pages/SkaterProfileDisplayPage";
+import SkaterContactPage from "./pages/SkaterContactPage";
 
-//Mainstate of the application.
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null);
 
-  //Another challenging quandry based on correct JWT Token extraction. "role" is defined in login
-  // passed into this function as a JWT from localStorage, containing the userId and role (skater or admin).
-  //Rememeber on default, everyone is skater, until a super user (you or me) decides to change the skater's role
-  //To a admin. This is currently done inside the application using the router.put('/update-role/:userId', updateRole); route
-  //as defined in the server and necessary controllers and schema to update the role default role from skater to
-  //admin. These rules are set up in the controllers where the JWT's are primarily initialized.
-  const handleLoginSuccess = (role) => {
+  // Initialize state from localStorage
+  useEffect(() => {
+    const storedIsLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const storedUserRole = localStorage.getItem("userRole");
+    if (storedIsLoggedIn && storedUserRole) {
+      setIsLoggedIn(storedIsLoggedIn);
+      setUserRole(storedUserRole);
+    }
+  }, []);
+
+  // Update localStorage when state changes
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", isLoggedIn);
+    localStorage.setItem("userRole", userRole);
+  }, [isLoggedIn, userRole]);
+
+  const handleLoginSuccess = (role, name) => {
     setIsLoggedIn(true);
     setUserRole(role);
-    localStorage.setItem("userRole", role); // Storing user role in local storage
+    localStorage.setItem("userRole", role);
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUserRole(null);
     localStorage.removeItem("token");
+    localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userRole");
   };
 
+
   return (
-    // Main Router and display
     <Router>
       <div>
-        {/* Ternary operator used to set dashboard paths based on user role */}
-        {!isLoggedIn ? (
-          <>
-            <UserRegistration />
-            <UserLogin onLoginSuccess={handleLoginSuccess} />
-          </>
-        ) : userRole === "admin" ? (
-          <AdminDashboard onLogout={handleLogout} />
-        ) : (
-          <SkaterDashboard onLogout={handleLogout} />
-        )}
+        {isLoggedIn && userRole === "admin" && <AdminDashboard onLogout={handleLogout} />}
+        {isLoggedIn && userRole === "skater" && <SkaterDashboard onLogout={handleLogout} />}
         <Routes>
-          {/* AdminDashBoard */}
+          <Route path="/login" element={!isLoggedIn ? 
+            <>
+              <UserRegistration />
+              <UserLogin onLoginSuccess={handleLoginSuccess} />
+            </> : 
+            <Navigate to={userRole === "admin" ? "/admin/home" : "/skater/home"} />
+          } />
           <Route path="/admin/home" element={<AdminHomePage />} />
           <Route path="/admin/new-user" element={<AdminUpdateUserPage />} />
           <Route path="/admin/profile" element={<AdminProfilePage />} />
           <Route path="/admin/contact" element={<AdminContactPage />} />
-          {/* SkaterDashBoard */}
           <Route path="/skater/contact" element={<SkaterContactPage />} />
-          <Route
-            path="/skater/profile"
-            element={<SkaterProfileDisplayPage />}
-          />
-          <Route path="/skater/home" element={<SkaterHomePage />} />?
+          <Route path="/skater/profile" element={<SkaterProfileDisplayPage />} />
+          <Route path="/skater/home" element={<SkaterHomePage />} />
+          {/* Redirect from root to login */}
+          <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </div>
     </Router>
