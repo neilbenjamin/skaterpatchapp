@@ -1,5 +1,5 @@
 //Similar component to AdminGetAllUserPage, but with varying functionality. This component is used for
-// selecting users meant for the main profile diaplay and has an immediate useEffect update trigger.
+// selecting users meant for the main profile display and has an immediate useEffect update trigger.
 //Once again, first tested with routers, controllers, schema and Thunderclient and then using that data
 //to build the fetch.
 

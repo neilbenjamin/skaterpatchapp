@@ -295,6 +295,14 @@ function AdminUpdateUserPage() {
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
             </div>
+            <div className="row g-2 mt-3">
+              <div className="col-12 col-md-auto">
+                <button type="submit" className="btn btn-primary w-100">Update Profile</button>
+              </div>
+              <div className="col-12 col-md-auto">
+                <AdminDeleteUserPage userId={userId} />
+              </div>
+            </div>
             <div><h2 className="text-center">ADMIN USERS</h2></div>
             <div className="col-md-6">
             <label htmlFor="admin-name" className="form-label">Admin Name:</label>
@@ -355,14 +363,6 @@ function AdminUpdateUserPage() {
                 onChange={(e) => setAdminRole(e.target.value)}
                 placeholder="Admin Role"
               />
-            </div>
-            <div className="row g-2 mt-3">
-              <div className="col-12 col-md-auto">
-                <button type="submit" className="btn btn-primary w-100">Update Profile</button>
-              </div>
-              <div className="col-12 col-md-auto">
-                <AdminDeleteUserPage userId={userId} />
-              </div>
             </div>
           </form>
         )}
