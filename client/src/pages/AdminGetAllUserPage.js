@@ -14,7 +14,7 @@ function AdminGetAllUsersPage({ onUserSelect, updateTrigger }) {
       setIsLoading(true);
       try {
         // Send a request to the API endpoint for fetching all users
-        const response = await fetch('/api/users/all-users');
+        const response = await fetch('/api/users/skater');
         
         // Check if the response is successful; otherwise, throw an error
         if (!response.ok) {
@@ -55,7 +55,7 @@ function AdminGetAllUsersPage({ onUserSelect, updateTrigger }) {
             // Display a dropdown menu with user options once data is loaded. Pass data back to 
             //AdminUpdateUserPage.js
             <select className="form-select" onChange={handleUserSelect}>
-              <option value="">Select a User</option>
+              <option value="">Select Skater</option>
               {users.map((user) => (
                 // Map through the list of users and generate options
                 <option key={user._id} value={user._id}>

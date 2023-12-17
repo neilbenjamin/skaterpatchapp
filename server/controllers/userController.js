@@ -116,6 +116,18 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
+// GET Skater user data
+exports.getSkaterUsers = async (req, res) => {
+  try {
+    const skaterUsers = await User.find({ role: 'skater' });
+    res.status(200).json(skaterUsers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
 //DELETE user
 
 exports.deleteUser = async (req, res) => {

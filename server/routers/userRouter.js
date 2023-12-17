@@ -19,6 +19,9 @@ router.get('/get-user-profile/:userId', userController.getUserProfile);
 // New route for getting all users
 router.get('/all-users', userController.getAllUsers);
 
+// Example in your Express route file
+router.get('/skater', userController.getSkaterUsers);
+
 // Update user role - Only accessible by super admin
 router.put('/update-role/:userId', updateRole);
 

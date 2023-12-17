@@ -7,7 +7,7 @@ exports.updateRole = async (req, res) => {
 
   try {
     // TODO: Add Authentication and Authorization checks here and set up controller in front end eventually
-    //to make it easier for otehr super users to authorise admins.
+    //to make it easier for other super users to authorise admins.
     // Ensure the requester is a super admin
 
     // Update the user's role
@@ -24,7 +24,7 @@ exports.updateRole = async (req, res) => {
     const updatedPayload = {
       id: user._id,
       email: user.email,
-      role: user.role,
+      role: user.role
     };
     const updatedToken = jwt.sign(updatedPayload, process.env.JWT_SECRET, {
       expiresIn: "1h",

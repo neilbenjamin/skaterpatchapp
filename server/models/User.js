@@ -16,8 +16,6 @@ const userSchema = new mongoose.Schema({
   contactNumberSkater: { type: String, default: null },
   contactNumberParent: { type: String, default: null },
   dateOfBirth: { type: Date, default: null},
-  adminName: { type: String, default: null},
-  adminSurname: { type: String, default: null},
   adminRole: { type: String, default: null},
   adminSupervisor: { type: String, default: null},
   contactNumberAdmin: { type: String, default: null},

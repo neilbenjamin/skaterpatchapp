@@ -15,7 +15,7 @@ function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
       try {
         const response = await fetch(
           //Users the same endpoint to GET the necessary data.
-          "/api/users/all-users"
+          "/api/users/skater"
         );
         if (!response.ok) {
           throw new Error("Something went wrong!");
@@ -38,7 +38,6 @@ function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
 
   return (
     <div className="container mt-4 text-center">
-    <img src="/western-province-figure-skating.png" alt="WP_Logo" />
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h2 className="text-center mb-4 border-bottom pb-2">
@@ -48,7 +47,7 @@ function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
             <p>Loading...</p>
           ) : (
             <select className="form-select" onChange={handleSelectionChange}>
-              <option value="">Select a User</option>
+              <option value="">Select a Skater</option>
               {users.map((user) => (
                 <option key={user._id} value={user._id}>
                   {user.name} {user.surname}
@@ -58,6 +57,7 @@ function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
           )}
         </div>
       </div>
+      <img src="/western-province-figure-skating.png" alt="WP_Logo" />
     </div>
   );
 }

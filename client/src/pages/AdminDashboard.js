@@ -18,6 +18,9 @@ function AdminDashboard({ onLogout }) {
               <Nav.Link as={NavLink} to="/admin/profile">User Profile</Nav.Link>
             </NavItem>
             <NavItem>
+              <Nav.Link as={NavLink} to="/admin/admin-update">Update Admin</Nav.Link>
+            </NavItem>
+            <NavItem>
               <Nav.Link as={NavLink} to="/admin/contact">Contact</Nav.Link>
             </NavItem>
           </Nav>

@@ -11,6 +11,7 @@ import AdminContactPage from "./pages/AdminContactPage";
 import SkaterHomePage from "./pages/SkaterHomePage";
 import SkaterProfileDisplayPage from "./pages/SkaterProfileDisplayPage";
 import SkaterContactPage from "./pages/SkaterContactPage";
+import AdminUpdateAdmin from "./pages/AdminUpdateAdmin";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -63,10 +64,12 @@ function App() {
           <Route path="/admin/home" element={<AdminHomePage />} />
           <Route path="/admin/new-user" element={<AdminUpdateUserPage />} />
           <Route path="/admin/profile" element={<AdminProfilePage />} />
+          <Route path = "/admin/admin-update" element = {<AdminUpdateAdmin />} />
           <Route path="/admin/contact" element={<AdminContactPage />} />
           <Route path="/skater/contact" element={<SkaterContactPage />} />
           <Route path="/skater/profile" element={<SkaterProfileDisplayPage />} />
           <Route path="/skater/home" element={<SkaterHomePage />} />
+          
           {/* Redirect from root to login */}
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>

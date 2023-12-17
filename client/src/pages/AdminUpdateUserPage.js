@@ -5,6 +5,8 @@
 import React, { useState } from "react";
 import AdminGetAllUsersPage from "./AdminGetAllUserPage";
 import AdminDeleteUserPage from "./AdminDeleteUserPage";
+// css
+import '../style.css'
 
 
 function AdminUpdateUserPage() {
@@ -23,8 +25,6 @@ function AdminUpdateUserPage() {
   const [contactNumberSkater, setContactNumberSkater] = useState("");
   const [contactNumberParent, setContactNumberParent] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [adminName, setAdminName] = useState("");
-  const [adminSurname, setAdminSurname] = useState("");
   const [adminSupervisor, setAdminSupervisor] = useState("");
   const [contactNumberAdmin, setContactNumberAdmin] = useState("");
   const [adminShift, setAdminShift] = useState("");
@@ -57,8 +57,6 @@ function AdminUpdateUserPage() {
         setContactNumberSkater(userData.contactNumberSkater || "");
         setContactNumberParent(userData.contactNumberParent || "");
         setDateOfBirth(userData.dateOfBirth || "");
-        setAdminName(userData.adminName || "");
-        setAdminSurname(userData.adminSurname || "");
         setAdminSupervisor(userData.adminSupervisor || "");
         setContactNumberAdmin(userData.contactNumberAdmin || "");
         setAdminShift(userData.adminShift || "");
@@ -80,8 +78,6 @@ function AdminUpdateUserPage() {
       setContactNumberSkater("");
       setContactNumberParent("");
       setDateOfBirth("");
-      setAdminName("");
-      setAdminSurname("");
       setAdminSupervisor("");
       setContactNumberAdmin("");
       setAdminShift("");
@@ -117,8 +113,6 @@ function AdminUpdateUserPage() {
       contactNumberSkater,
       contactNumberParent,
       dateOfBirth,
-      adminName,
-      adminSurname,
       adminRole,
       adminSupervisor,
       contactNumberAdmin,
@@ -151,7 +145,6 @@ function AdminUpdateUserPage() {
 // JSX
   return (
     <div className="container mt-4 text-center">
-     <img src="/western-province-figure-skating.png" alt="WP_Logo" />
       <div className="row">
         <div className="col-12">
           <h2 className="text-center mb-4 font-weight-bold">UPDATE USER PROFILE</h2>
@@ -303,70 +296,10 @@ function AdminUpdateUserPage() {
                 <AdminDeleteUserPage userId={userId} />
               </div>
             </div>
-            <div><h2 className="text-center">ADMIN USERS</h2></div>
-            <div className="col-md-6">
-            <label htmlFor="admin-name" className="form-label">Admin Name:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={adminName}
-                onChange={(e) => setAdminName(e.target.value)}
-                placeholder="Admin Name"
-              />
-            </div>
-            <div className="col-md-6">
-            <label htmlFor="Admin Surname" className="form-label">Admin Surname:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={adminSurname}
-                onChange={(e) => setAdminSurname(e.target.value)}
-                placeholder="Admin Surname"
-              />
-            </div>
-            <div className="col-md-6">
-            <label htmlFor="admin-supervisor" className="form-label">Admin Supervisor:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={adminSupervisor}
-                onChange={(e) => setAdminSupervisor(e.target.value)}
-                placeholder="Admin Supervisor"
-              />
-            </div>
-            <div className="col-md-6">
-            <label htmlFor="admin-contact-number" className="form-label">Admin Contact:</label>
-              <input
-                type="tel"
-                className="form-control"
-                value={contactNumberAdmin}
-                onChange={(e) => setContactNumberAdmin(e.target.value)}
-                placeholder="Admin Contact No."
-              />
-            </div>
-            <div className="col-md-6">
-            <label htmlFor="admin-shift" className="form-label">Admin Shift:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={adminShift}
-                onChange={(e) => setAdminShift(e.target.value)}
-                placeholder="Admin Shift"
-              />
-            </div>
-            <div className="col-md-6">
-            <label htmlFor="admin-role" className="form-label">Admin Role:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={adminRole}
-                onChange={(e) => setAdminRole(e.target.value)}
-                placeholder="Admin Role"
-              />
-            </div>
           </form>
         )}
       </div>
+      <img src="/western-province-figure-skating.png" alt="WP_Logo"/>
     </div>
   );
 }
