@@ -7,7 +7,7 @@ const AdminHomePage = () => {
   useEffect(() => {
     const fetchUserProfile = async (userId) => {
       try {
-        const response = await fetch(`http://localhost:8080/api/users/get-user-profile/${userId}`);
+        const response = await fetch(`/api/users/get-user-profile/${userId}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch user profile: ${response.status}`);
         }

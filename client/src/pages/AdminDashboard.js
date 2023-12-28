@@ -12,10 +12,13 @@ function AdminDashboard({ onLogout }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <NavItem>
-              <Nav.Link as={NavLink} to="/admin/new-user">Update User</Nav.Link>
+              <Nav.Link as={NavLink} to="/admin/profile">Skater Profile</Nav.Link>
             </NavItem>
             <NavItem>
-              <Nav.Link as={NavLink} to="/admin/profile">User Profile</Nav.Link>
+              <Nav.Link as={NavLink} to="/admin/update-patchcard">Patch Card</Nav.Link>
+            </NavItem>
+            <NavItem>
+              <Nav.Link as={NavLink} to="/admin/new-user">Update Skater</Nav.Link>
             </NavItem>
             <NavItem>
               <Nav.Link as={NavLink} to="/admin/admin-update">Update Admin</Nav.Link>

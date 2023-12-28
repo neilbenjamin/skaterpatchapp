@@ -15,6 +15,9 @@ function SkaterDashboard({ onLogout }) {
               <Nav.Link as={NavLink} to="/skater/profile">Profile</Nav.Link>
             </NavItem>
             <NavItem>
+              <Nav.Link as={NavLink} to="/skater/update-profile">Update Profile</Nav.Link>
+            </NavItem>
+            <NavItem>
               <Nav.Link as={NavLink} to="/skater/contact">Contact</Nav.Link>
             </NavItem>
             {/* Insert other navigation links if necessary */}

@@ -3,15 +3,18 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import UserRegistration from "./RegisterLogin/userRegistration";
 import UserLogin from "./RegisterLogin/userLogin";
 import AdminDashboard from "./pages/AdminDashboard";
-import SkaterDashboard from "./pages/SkaterDashboard";
 import AdminHomePage from "./pages/AdminHomePage";
 import AdminUpdateUserPage from "./pages/AdminUpdateUserPage";
 import AdminProfilePage from "./pages/AdminProfilePage";
+import AdminUpdateAdmin from "./pages/AdminUpdateAdmin";
 import AdminContactPage from "./pages/AdminContactPage";
+import SkaterDashboard from "./pages/SkaterDashboard";
 import SkaterHomePage from "./pages/SkaterHomePage";
 import SkaterProfileDisplayPage from "./pages/SkaterProfileDisplayPage";
 import SkaterContactPage from "./pages/SkaterContactPage";
-import AdminUpdateAdmin from "./pages/AdminUpdateAdmin";
+import SkaterProfileUpdate from "./pages/SkaterProfileUpdate"
+import AdminUpdatePatchCard from "./pages/AdminUpdatePatchCard";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -62,13 +65,16 @@ function App() {
             <Navigate to={userRole === "admin" ? "/admin/home" : "/skater/home"} />
           } />
           <Route path="/admin/home" element={<AdminHomePage />} />
-          <Route path="/admin/new-user" element={<AdminUpdateUserPage />} />
+          <Route path="/admin/update-patchcard" element={<AdminUpdatePatchCard />} />
           <Route path="/admin/profile" element={<AdminProfilePage />} />
+          <Route path="/admin/new-user" element={<AdminUpdateUserPage />} />
           <Route path = "/admin/admin-update" element = {<AdminUpdateAdmin />} />
           <Route path="/admin/contact" element={<AdminContactPage />} />
           <Route path="/skater/contact" element={<SkaterContactPage />} />
           <Route path="/skater/profile" element={<SkaterProfileDisplayPage />} />
           <Route path="/skater/home" element={<SkaterHomePage />} />
+          <Route path="/skater/update-profile" element={<SkaterProfileUpdate />} />
+
           
           {/* Redirect from root to login */}
           <Route path="/" element={<Navigate to="/login" />} />

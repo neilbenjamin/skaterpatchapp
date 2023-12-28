@@ -23,7 +23,7 @@ function AdminUpdateAdmin() {
         setUserId(adminId);
 
         const response = await fetch(
-          `http://localhost:8080/api/users/get-user-profile/${adminId}`
+          `/api/users/get-user-profile/${adminId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch admin details");
@@ -36,6 +36,7 @@ function AdminUpdateAdmin() {
         setContactNumberAdmin(adminData.contactNumberAdmin || "");
         setAdminShift(adminData.adminShift || "");
         setAdminRole(adminData.adminRole || "");
+        console.log(adminData)
       } catch (error) {
         console.error("Error:", error);
       }

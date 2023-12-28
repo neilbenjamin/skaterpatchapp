@@ -16,19 +16,9 @@ function AdminUpdateUserPage() {
   const [surname, setSurname] = useState("");
   const [coachName, setCoachName] = useState("");
   const [wpnumber, setWpNumber] = useState("");
-  const [patchesRemaining, setPatchesRemaining] = useState("");
-  const [datePurchased, setDatePurchased] = useState("");
-  const [dateUsed, setDateUsed] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
-  const [patchCardNumber, setPatchCardNumber] = useState("");
-  const [purchaseInvoiceNumber, setPurchaseInvoiceNumber] = useState("");
   const [contactNumberSkater, setContactNumberSkater] = useState("");
   const [contactNumberParent, setContactNumberParent] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [adminSupervisor, setAdminSupervisor] = useState("");
-  const [contactNumberAdmin, setContactNumberAdmin] = useState("");
-  const [adminShift, setAdminShift] = useState("");
-  const [adminRole, setAdminRole] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
   //Uses selected userId as para, to endpoint to get the correct user.
@@ -48,19 +38,9 @@ function AdminUpdateUserPage() {
         setSurname(userData.surname || "");
         setCoachName(userData.coachName || "");
         setWpNumber(userData.wpnumber || "");
-        setPatchesRemaining(userData.patchesRemaining || "");
-        setDatePurchased(userData.datePurchased || "");
-        setDateUsed(userData.dateUsed || "");
-        setExpiryDate(userData.expiryDate || "");
-        setPatchCardNumber(userData.patchCardNumber || "");
-        setPurchaseInvoiceNumber(userData.purchaseInvoiceNumber || "");
         setContactNumberSkater(userData.contactNumberSkater || "");
         setContactNumberParent(userData.contactNumberParent || "");
         setDateOfBirth(userData.dateOfBirth || "");
-        setAdminSupervisor(userData.adminSupervisor || "");
-        setContactNumberAdmin(userData.contactNumberAdmin || "");
-        setAdminShift(userData.adminShift || "");
-        setAdminRole(userData.adminRole || "");
       } catch (error) {
         console.error("Error:", error);
       }
@@ -69,54 +49,24 @@ function AdminUpdateUserPage() {
       setSurname("");
       setCoachName("");
       setWpNumber("");
-      setPatchesRemaining("");
-      setDatePurchased("");
-      setDateUsed("");
-      setExpiryDate("");
-      setPatchCardNumber("");
-      setPurchaseInvoiceNumber("");
       setContactNumberSkater("");
       setContactNumberParent("");
       setDateOfBirth("");
-      setAdminSupervisor("");
-      setContactNumberAdmin("");
-      setAdminShift("");
-      setAdminRole("");
     }
-  };
-
-  //Format dates:
-  const formatDateForDB = (dateString) => {
-    if (!dateString) return '';
-    return new Date(dateString).toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
   };
   
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-  const formattedDatePurchased = formatDateForDB(datePurchased);
-  const formattedDateUsed = formatDateForDB(dateUsed);
-  const formattedExpiryDate = formatDateForDB(expiryDate);
+    e.preventDefault()
 
     const bodyContent = JSON.stringify({
       name,
       surname,
       coachName,
       wpnumber,
-      patchesRemaining,
-      datePurchased: formattedDatePurchased,
-      dateUsed: formattedDateUsed,
-      expiryDate: formattedExpiryDate,
-      patchCardNumber,
-      purchaseInvoiceNumber,
       contactNumberSkater,
       contactNumberParent,
       dateOfBirth,
-      adminRole,
-      adminSupervisor,
-      contactNumberAdmin,
-      adminShift,
     });
 
     try {
@@ -218,66 +168,7 @@ function AdminUpdateUserPage() {
                 placeholder="WP Number"
               />
             </div>
-            <div className="col-md-6">
-            <label htmlFor="patches-remaining" className="form-label">Patches Remaining:</label>
-              <input
-                type="number"
-                className="form-control"
-                value={patchesRemaining}
-                onChange={(e) => setPatchesRemaining(e.target.value)}
-                placeholder="Patches Left"
-              />
-            </div>
-            <div className="col-md-6">
-              <label htmlFor="datePurchased" className="form-label">Date Purchased:</label>
-              <input
-                type="date"
-                className="form-control"
-                id="datePurchased"
-                value={datePurchased}
-                onChange={(e) => setDatePurchased(e.target.value)}
-              />
-            </div>
-            <div className="col-md-6">
-              <label htmlFor="dateUsed" className="form-label">Date Used:</label>
-              <input
-                type="date"
-                className="form-control"
-                id="dateUsed"
-                value={dateUsed}
-                onChange={(e) => setDateUsed(e.target.value)}
-              />
-            </div>
-            <div className="col-md-6">
-              <label htmlFor="expiryDate" className="form-label">Expiry Date:</label>
-              <input
-                type="date"
-                className="form-control"
-                id="expiryDate"
-                value={expiryDate}
-                onChange={(e) => setExpiryDate(e.target.value)}
-              />
-            </div>
-            <div className="col-md-6">
-            <label htmlFor="patch-card-number" className="form-label">Patch Card Number:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={patchCardNumber}
-                onChange={(e) => setPatchCardNumber(e.target.value)}
-                placeholder="Patch Card No."
-              />
-            </div>
-            <div className="col-md-6">
-            <label htmlFor="invoice-number" className="form-label">Invoice Number:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={purchaseInvoiceNumber}
-                onChange={(e) => setPurchaseInvoiceNumber(e.target.value)}
-                placeholder="Invoice Purchase No."
-              />
-            </div>
+            
             <div className="col-md-6">
               <label htmlFor="dateOfBirth" className="form-label">Date of Birth:</label>
               <input

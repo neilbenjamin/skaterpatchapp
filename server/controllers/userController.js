@@ -127,8 +127,105 @@ exports.getSkaterUsers = async (req, res) => {
   }
 };
 
+//Update Skater Profile Info
 
-//DELETE user
+// Update Skater Profile Information
+exports.updateSkaterProfile = async (req, res) => {
+  try {
+    const skaterId = req.params.userId; // Extracting skater ID from URL parameters
+    const updateData = req.body; // Data to be updated
+
+    // Optional: Validate updateData or filter out unwanted fields
+
+    // Find the skater by ID and update their profile
+    const updatedSkater = await User.findByIdAndUpdate(skaterId, updateData, { new: true });
+    if (!updatedSkater) {
+      return res.status(404).json({ error: "Skater not found" });
+    }
+
+    res.status(200).json({ message: "Skater profile updated successfully", skater: updatedSkater });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+//Purchase New PatchCard
+
+exports.purchasePatchCard = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    // Fetch the current user to get the existing patchesRemaining count
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    const currentPatchesRemaining = user.patchesRemaining || 0;
+
+    // Create five new patches
+    const newPatches = Array.from({ length: 5 }, () => ({
+      used: false,
+      dateUsed: null,
+      partOfDay: null
+    }));
+
+    // Update user document with new patches and increment patchesRemaining
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { 
+        $push: { patches: { $each: newPatches } },
+        $set: { patchesRemaining: currentPatchesRemaining + 5 } // Increment patchesRemaining by 5
+      },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json({ message: "Patch card purchased successfully", user: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// Update PatchCard Data
+exports.updateUserPatch = async (req, res) => {
+  try {
+    const { userId, patchId } = req.params;
+    const patchData = req.body; // Assuming this contains the updated data for the patch
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const patchIndex = user.patches.findIndex(patch => patch._id.toString() === patchId);
+    if (patchIndex === -1) {
+      return res.status(404).json({ error: "Patch not found" });
+    }
+
+    // Check if the patch is being marked as used and decrement patchesRemaining if so
+    if (!user.patches[patchIndex].used && patchData.used) {
+      user.patchesRemaining = Math.max(0, user.patchesRemaining - 1);
+    }
+
+    // Update the specific patch
+    user.patches[patchIndex] = { ...user.patches[patchIndex].toObject(), ...patchData };
+
+    await user.save();
+
+    res.status(200).json({ message: "Patch updated successfully", user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+
+//Delete User
 
 exports.deleteUser = async (req, res) => {
   try {

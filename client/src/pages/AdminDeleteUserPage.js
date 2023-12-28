@@ -1,26 +1,28 @@
+//Main delete function to delete user from the database. End point and function first tested in Thunderclient with the
+//backend routers/controllers/models set up and then constructed in react to match. I used Hyperion, Thunderclient and Open AI with the error handling and route checking
+
+
 import React, { useState } from "react";
 
+//Importing userId to match correct user with database
 function AdminDeleteUserPage({ userId }) {
+  //State components to manage state logic
   const [isDeleted, setIsDeleted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  //Async function to handle the delete fetch request
   const handleDelete = async () => {
     if (!userId) {
       setErrorMessage("No user selected.");
       return;
     }
-
-    // Confirmation dialog
-    const confirmDelete = window.confirm("Are you sure you want to delete this user?");
-    if (!confirmDelete) {
-      console.log("Deletion canceled by user");
-      return; // Exit the function if user cancels
-    }
-
     try {
-      const response = await fetch(`/api/users/delete-user/${userId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `/api/users/delete-user/${userId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (response.ok) {
         setIsDeleted(true);
@@ -33,6 +35,7 @@ function AdminDeleteUserPage({ userId }) {
     }
   };
 
+  //JSX updating state based on user interaction.
   return (
     <div className="container">
       {isDeleted ? (
