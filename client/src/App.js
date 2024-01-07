@@ -14,6 +14,7 @@ import SkaterProfileDisplayPage from "./pages/SkaterProfileDisplayPage";
 import SkaterContactPage from "./pages/SkaterContactPage";
 import SkaterProfileUpdate from "./pages/SkaterProfileUpdate"
 import AdminUpdatePatchCard from "./pages/AdminUpdatePatchCard";
+import TestUseEffectComponent from "./pages/TestUseEffectComponent";
 
 
 function App() {
@@ -70,7 +71,8 @@ function App() {
           <Route path="/admin/new-user" element={<AdminUpdateUserPage />} />
           <Route path = "/admin/admin-update" element = {<AdminUpdateAdmin />} />
           <Route path="/admin/contact" element={<AdminContactPage />} />
-          <Route path="/skater/contact" element={<SkaterContactPage />} />
+          <Route path="/admin/test" element={<TestUseEffectComponent />} />
+          <Route path="/skater/contact" element={<SkaterContactPage />} />    
           <Route path="/skater/profile" element={<SkaterProfileDisplayPage />} />
           <Route path="/skater/home" element={<SkaterHomePage />} />
           <Route path="/skater/update-profile" element={<SkaterProfileUpdate />} />

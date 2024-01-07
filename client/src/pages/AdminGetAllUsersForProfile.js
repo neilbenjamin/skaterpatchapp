@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from "react";
 
-function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
+function AdminGetAllUsersForProfile({ onUserSelect }) {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,7 +30,7 @@ function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
     };
 
     fetchUsers();
-  }, [updateTrigger]); // Depend on updateTrigger
+  }, []); // Depend on updateTrigger
 
   const handleSelectionChange = (event) => {
     onUserSelect(event.target.value);
@@ -57,7 +57,6 @@ function AdminGetAllUsersForProfile({ onUserSelect, updateTrigger }) {
           )}
         </div>
       </div>
-      <img src="/western-province-figure-skating.png" alt="WP_Logo" />
     </div>
   );
 }

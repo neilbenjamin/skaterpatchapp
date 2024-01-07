@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const db = require('./dbConfig/dbConfig');
 const cors = require('cors'); // Import the cors middleware
 const app = express();
@@ -23,6 +23,10 @@ app.use(cors());
 // New Registered User Routers
 const userRouter = require('./routers/userRouter'); // Adjust the path as necessary
 app.use('/api/users', userRouter); // Use userRouter for user-related routes
+
+// New Registered User Routers
+const historyRouter = require('./routers/historyRouter'); // Adjust the path as necessary
+app.use('/api/history', historyRouter); // Use historyRouter for history-related routes
 
 // Base server route
 app.get('/', (req, res) => {

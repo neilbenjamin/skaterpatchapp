@@ -21,6 +21,7 @@ function AdminUpdateUserPage() {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
+
   //Uses selected userId as para, to endpoint to get the correct user.
   const handleUserSelect = async (selectedUserId) => {
     setUserId(selectedUserId);
@@ -97,7 +98,7 @@ function AdminUpdateUserPage() {
     <div className="container mt-4 text-center">
       <div className="row">
         <div className="col-12">
-          <h2 className="text-center mb-4 font-weight-bold">UPDATE USER PROFILE</h2>
+          <h2 className="text-center mb-4 font-weight-bold">UPDATE SKATER PROFILE</h2>
           {/* Update the display based on the user data returned in the prop
           Passing prop to search database for user and then returning it here to update the userSelect async
           function which updates the correct userId and fields */}

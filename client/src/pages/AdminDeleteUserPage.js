@@ -27,6 +27,7 @@ function AdminDeleteUserPage({ userId }) {
       if (response.ok) {
         setIsDeleted(true);
         setErrorMessage("");
+        
       } else {
         throw new Error("Failed to delete user");
       }

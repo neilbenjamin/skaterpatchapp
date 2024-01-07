@@ -9,12 +9,20 @@ import AdminUserProfileDisplayPage from "./AdminUserProfileDisplayPage";
 function AdminProfilePage() {
   const [selectedUserId, setSelectedUserId] = useState("");
 
+  // This function handles the selection change from AdminGetAllUsersForProfile
+  const handleUserSelection = (userId) => {
+    setSelectedUserId(userId);
+  };
+
   return (
     <div>
-      {/* Setting the prop to get the selected user */}
-      <AdminGetAllUsersForProfile onUserSelect={setSelectedUserId} />
-      {/* Setting the prop to pass the selectedUser ID to the page component used to display the selected user profile. */}
+      {/* Pass the selection handler to AdminGetAllUsersForProfile */}
+      <AdminGetAllUsersForProfile onUserSelect={handleUserSelection} />
+      {/* Pass the selectedUserId to AdminUserProfileDisplayPage */}
       <AdminUserProfileDisplayPage userId={selectedUserId} />
+      <div className="text-center">
+        <img src="/western-province-figure-skating.png" alt="WP_Logo" />
+      </div>
     </div>
   );
 }

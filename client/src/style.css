@@ -7,3 +7,20 @@
     height: auto;
   }
   
+  /*Dynamically update btn colors*/
+
+  .btn-update {
+  background-color: grey;
+  color: white;
+}
+
+.btn-update.active {
+  background-color: green;
+}
+
+/*Disable Btn*/
+
+.btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

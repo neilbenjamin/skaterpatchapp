@@ -47,7 +47,7 @@ function AdminGetAllUsersPage({ onUserSelect, updateTrigger }) {
     <div className="container my-4">
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <h2 className="text-center mb-4 border-bottom pb-2">All Users</h2>
+          {/* <h2 className="text-center mb-4 border-bottom pb-2">SELECT A SKATER </h2> */}
           {isLoading ? (
             // Display a loading message while data is being fetched
             <p>Loading...</p>
@@ -59,7 +59,7 @@ function AdminGetAllUsersPage({ onUserSelect, updateTrigger }) {
               {users.map((user) => (
                 // Map through the list of users and generate options
                 <option key={user._id} value={user._id}>
-                  {user.name} {user.surname} (ID: {user._id})
+                  {user.name} {user.surname}
                 </option>
               ))}
             </select>

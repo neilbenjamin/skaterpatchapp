@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   wpnumber: { type: String, default: null },
   patchesRemaining: { type: Number, default: null },
   datePurchased: { type: String, default: null },  // Changed to String
-  dateUsed: { type: String, default: null },       // Changed to String
+  // dateUsed: { type: String, default: null },  // Changed to String commented out for testing as this proerty is now in the patches array below.
   expiryDate: { type: String, default: null },     // Changed to String
   patchCardNumber: { type: String, default: null },
   purchaseInvoiceNumber: { type: String, default: null },
@@ -27,9 +27,10 @@ const userSchema = new mongoose.Schema({
       dateUsed: String,
       partOfDay: {
         type: String,
-        enum: ["morning", "afternoon", "evening", null],
+        enum: ["Morning", "Afternoon", "Evening", null],
         default: null,
       },
+      updated: { type: Boolean, default: false } // Add this field
     },
   ],
 });
