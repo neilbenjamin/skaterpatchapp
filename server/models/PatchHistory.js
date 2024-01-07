@@ -6,16 +6,19 @@ const patchHistorySchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    name: { type: String, default: null },
+    surname: { type: String, default: null },
     used: { type: Boolean, default: false },
-    dateUsed: { type: String, default: null }, // Keep as String if it matches your current data format
+    dateUsed: { type: String, default: null },
     partOfDay: {
         type: String,
         enum: ["Morning", "Afternoon", "Evening", null],
         default: null
     },
-    timestamp: { type: Date, default: Date.now } // To record when this history entry was created
+    timestamp: { type: Date, default: Date.now }
 });
 
 const PatchHistory = mongoose.model("PatchHistory", patchHistorySchema);
 
-module.exports = PatchHistory;
+module.exports = mongoose.model("PatchHistory", patchHistorySchema);
+

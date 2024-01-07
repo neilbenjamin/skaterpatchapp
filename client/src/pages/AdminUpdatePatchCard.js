@@ -66,7 +66,8 @@ function AdminUpdatePatchCard() {
         setPatchCardNumber(newPatchCardNumber);
         setPurchaseInvoiceNumber(newPurchaseInvoiceNumber);
         setSuccessMessage("New patch card purchased successfully");
-        console.log("Patches remaining after fetch:", updatedUserData.user.patchesRemaining);
+        //Check correct patch output
+        // console.log("Patches remaining after fetch:", updatedUserData.user.patchesRemaining);
 
       } else {
         throw new Error("Failed to purchase new patch card");
@@ -116,6 +117,8 @@ function AdminUpdatePatchCard() {
         if (patchToUpdate.used) {
           const patchHistoryData = {
             userId: userId,
+            name: updatedUserData.user.name,  // Assuming userName is available in updatedUserData
+            surname: updatedUserData.user.surname,  // Assuming userSurname is available in updatedUserData
             used: patchToUpdate.used,
             dateUsed: patchToUpdate.dateUsed,
             partOfDay: patchToUpdate.partOfDay,
@@ -130,7 +133,8 @@ function AdminUpdatePatchCard() {
         }
 
         setSuccessMessage("Patch updated successfully");
-        console.log("Patches remaining after fetch:", updatedUserData.user.patchesRemaining);
+        //Check correct patch output
+        // console.log("Patches remaining after fetch:", updatedUserData.user.patchesRemaining);
 
       } else {
         throw new Error("Failed to update patch card");
@@ -140,6 +144,7 @@ function AdminUpdatePatchCard() {
       setSuccessMessage("An error occurred while updating the patch card.");
     }
 };
+
 
 
   return (
